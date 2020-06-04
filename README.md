@@ -30,3 +30,12 @@ module "scaleway-bare-metal" {
 * __Security__
   * `ssh_user` - Name of SSH user for first login. (default: `root`)
   * `ssh_key_id` - ID of SSH key uploaded to Scaleway.
+
+# Known Issues
+
+Currently the `scaleway_baremetal_server` resource does not support;
+
+* Configuring floating IPs with `ip_id` setting
+* Configuring firewall rules with `security_group_id` setting
+
+It also appears to be only available in the `fr-par-2` zone.
