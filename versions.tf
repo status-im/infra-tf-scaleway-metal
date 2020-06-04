@@ -1,6 +1,7 @@
 terraform {
   required_version = ">= 0.12"
   required_providers {
-    scaleway = " = 1.15.0"
+    cloudflare = "= 2.3.0"
+    scaleway   = "= 1.15.0"
   }
 }
