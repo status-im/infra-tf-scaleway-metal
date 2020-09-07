@@ -1,7 +1,17 @@
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 0.13"
   required_providers {
-    cloudflare = "= 2.3.0"
-    scaleway   = "= 1.15.0"
+    cloudflare = {
+      source  = "terraform-providers/cloudflare"
+      version = "= 2.3.0"
+    }
+    scaleway = {
+      source  = "scaleway/scaleway"
+      version = "= 1.16.0"
+    }
+    ansible = {
+      source  = "nbering/ansible"
+      version = "= 1.0.4"
+    }
   }
 }
