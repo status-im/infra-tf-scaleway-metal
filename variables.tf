@@ -71,6 +71,5 @@ variable "domain" {
 
 variable "zone_id" {
   description = "ID of CloudFlare zone for host record."
-  /* We default to: statusim.net */
-  default     = "14660d10344c9898521c4ba49789f563"
+  default     = "14660d10344c9898521c4ba49789f563" /* statusim.net */
 }

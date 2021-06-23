@@ -8,7 +8,7 @@ locals {
   tags        = [local.stage, var.group, var.env]
   tags_sorted = sort(distinct(local.tags))
   /* pre-generated list of hostnames */
-  hostnames = [for i in range(1, var.host_count+1): 
+  hostnames = [for i in range(1, var.host_count + 1) :
     "${var.name}-${format("%02d", i)}.${local.dc}.${var.env}.${local.stage}"
   ]
 }
@@ -26,7 +26,7 @@ resource "scaleway_baremetal_server" "host" {
   offer = var.type
 
   /* SSH access */
-  ssh_key_ids = [ var.ssh_key_id ]
+  ssh_key_ids = [var.ssh_key_id]
 
   /* bootstraping access for later Ansible use */
   provisioner "ansible" {
@@ -39,11 +39,11 @@ resource "scaleway_baremetal_server" "host" {
       groups = [var.group]
 
       extra_vars = {
-        hostname         = self.name
-        ansible_ssh_user = var.ssh_user
-        data_center      = local.dc
-        stage            = local.stage
-        env              = var.env
+        hostname     = self.name
+        ansible_user = var.ssh_user
+        data_center  = local.dc
+        stage        = local.stage
+        env          = var.env
       }
     }
   }
@@ -55,14 +55,14 @@ resource "ansible_host" "host" {
   groups             = [var.group, local.dc]
   count              = length(scaleway_baremetal_server.host)
   vars = {
-    ansible_host     = scaleway_baremetal_server.host[count.index].ips[0].address
-    hostname         = local.hostnames[count.index]
-    region           = var.zone
-    dns_domain       = var.domain
-    dns_entry        = "${local.hostnames[count.index]}.${var.domain}"
-    data_center      = local.dc
-    stage            = local.stage
-    env              = var.env
+    ansible_host = scaleway_baremetal_server.host[count.index].ips[0].address
+    hostname     = local.hostnames[count.index]
+    region       = var.zone
+    dns_domain   = var.domain
+    dns_entry    = "${local.hostnames[count.index]}.${var.domain}"
+    data_center  = local.dc
+    stage        = local.stage
+    env          = var.env
   }
 }
 
