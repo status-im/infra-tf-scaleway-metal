@@ -31,7 +31,7 @@ variable "host_count" {
 variable "os_id" {
   description = "ID of OS image used for instance."
   type        = string
-  default     = "d859aa89-8b4a-4551-af42-ff7c0c27260a"
+  default     = "03b7f4ba-a6a1-4305-984e-b54fafbf1681"
 }
 
 variable "ssh_user" {
