@@ -67,7 +67,7 @@ resource "ansible_host" "host" {
 }
 
 resource "cloudflare_record" "host" {
-  zone_id = var.zone_id
+  zone_id = var.cf_zone_id
   count   = length(scaleway_baremetal_server.host)
   name    = element(ansible_host.host.*.vars.hostname, count.index)
   value   = element(ansible_host.host.*.vars.ansible_host, count.index)

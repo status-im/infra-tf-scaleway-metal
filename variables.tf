@@ -1,3 +1,17 @@
+/* DNS ------------------------------------------*/
+
+variable "cf_zone_id" {
+  description = "ID of CloudFlare zone for host record."
+  type        = string
+  default     = "fd48f427e99bbe1b52105351260690d1"
+}
+
+variable "domain" {
+  description = "DNS Domain to update"
+  type        = string
+  default     = "status.im"
+}
+
 /* SCALING --------------------------------------*/
 
 variable "zone" {
@@ -68,14 +82,4 @@ variable "stage" {
   description = "Name of stage, like prod, dev, or staging."
   type        = string
   default     = ""
-}
-
-variable "domain" {
-  description = "DNS Domain to update"
-  type        = string
-}
-
-variable "zone_id" {
-  description = "ID of CloudFlare zone for host record."
-  default     = "14660d10344c9898521c4ba49789f563" /* statusim.net */
 }

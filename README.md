@@ -27,10 +27,12 @@ module "scaleway-bare-metal" {
   * `group` - Name of Ansible group to add hosts to.
   * `env` - Environment for these hosts, affects DNS entries.
   * `stage` - Name of stage, like `prod`, `dev`, or `staging`.
-  * `domain` - DNS Domain to update.
 * __Security__
   * `ssh_user` - Name of SSH user for first login. (default: `root`)
   * `ssh_key_id` - ID of SSH key uploaded to Scaleway.
+* __DNS__
+  * `cf_zone_id` - CloudFlare DNS domain zone ID. (ID for `status.im`)
+  * `domain` - DNS Domain for hostnames. (default: `status.im`)
 
 # Known Issues
 
