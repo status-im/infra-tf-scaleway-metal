@@ -60,6 +60,7 @@ resource "ansible_host" "host" {
     region       = var.zone
     dns_domain   = var.domain
     dns_entry    = "${local.hostnames[count.index]}.${var.domain}"
+    host_type    = var.type
     data_center  = local.dc
     stage        = local.stage
     env          = var.env
